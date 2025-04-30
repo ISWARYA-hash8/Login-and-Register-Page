@@ -40,7 +40,13 @@ const Register = () =>{
          storeUserData(response?.data?.idToken);
 
       }).catch((err)=>{
-         console.log(err)
+         if(err?.response?.data?.error?.message=="EMAIL_EXISTS"){
+            setErrors({...errors,custom_error:"Already this email has been registered"})
+
+         }
+         else if(String(err.response.data.error.message).includes('WEAK_PASSWORD') ){
+            setErrors({...errors,custom_error:"Passowrd should be 6 characters"})
+         }
       }).finally(()=>{
          setLoading(false);
       })
