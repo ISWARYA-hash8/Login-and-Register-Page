@@ -5,6 +5,7 @@ import { storeUserData } from '../services/storage';
 import './RegisterPage.css'
 import react , {useState} from 'react';
 import {Navigate} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 const Register = () =>{
 
      const initialStateErrors = {email:{required :false},
@@ -58,7 +59,7 @@ const Register = () =>{
 
 
 
-     setErrors(errors);
+     setErrors({...errors});
   }
 
 
@@ -136,7 +137,7 @@ const Register = () =>{
                      </div>
                      <div className="clearfix"></div>
                      <div className="form-group">
-                       Already have account ? Please <a href="#">Login</a>
+                       Already have account ? Please <Link to ="/login">Login</Link>
                      </div>
           
           
